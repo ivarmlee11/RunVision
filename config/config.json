@@ -1,16 +1,22 @@
 {
   "development": {
-    "database": "express_auth_development",
+    "username": "ivar",
+    "password": "password",
+    "database": "runvision_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "database": "express_auth_test",
+    "username": "ivar",
+    "password": "password",
+    "database": "runvision_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "database": "express_auth_production",
+    "username": "ivar",
+    "password": "password",
+    "database": "runvision_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
