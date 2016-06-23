@@ -36,12 +36,22 @@ module.exports = function(sequelize, DataTypes) {
         // associations can be defined here
       }
     },
+    instanceMethods: {
+      validPassword: function(password) {
+        return bcrypt.compareSync(password, this.password);
+      },
+      toJSON: function() {
+        var jsonUser = this.get();
+        delete jsonUser.password;
+        return jsonUser;
+      }
+    },
     hooks: {
-      beforeCreate: function(user, options, cb) {
+      beforeCreate: function(createdUser, options, cb) {
         // hash password and save hash to user
-        var hash = bcrypt.hashSync(user.password, 10);
-        user.password = hash;
-        cb(null, user);
+        var hash = bcrypt.hashSync(createdUser.password, 10);
+        createdUser.password = hash;
+        cb(null, createdUser);
       }
     }
   });
