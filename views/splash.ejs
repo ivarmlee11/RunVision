@@ -13,13 +13,14 @@ Welcome, <%- (currentUser.name) %>!
       <input type="text" name="name" required id="textInput">
       <button type="submit" class="btn-group btn-group-sm" role="group" aria-label="..." id="pushRoutesToDB">Save Show</button>
   </form>
-
 </div>
   <div id="results"></div>
 </div>
-        <script async defer
+
+<script src="/js/app.js" type="text/javascript" charset="utf-8"></script>
+<script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHKEYVYqaOgwp_M3GURu30QKreYxq61bQ&callback=initMap">
-    </script>
-    <script src="/js/map.js" type="text/javascript" charset="utf-8"></script>
+</script>
+
 
 <% } %>

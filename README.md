@@ -9,4 +9,5 @@
 
 * Google Maps JavaScript
 * Google Snap to Roads
+* Google Geometry
 * Google Static Street View Image
