@@ -4,14 +4,24 @@ Welcome, <%- (currentUser.name) %>!
   <div>
     <h2><%= fav.name %></h2>
     <a href="/runMaps/showRuns/<%= fav.id %>">View Run</a>
-    <span id="delete">Delete</span>
-    <span id="update">Update</span>
+    <a href="/favs/deleteFavorites/<%= fav.id %>" id="delete">Delete Run</a>
   </div>
 <% }); %>
 
 <script>
 
-
+$('#delete').on('click', function(e) {
+  e.preventDefault();
+  var deleteElement = $(this);
+  var deleteUrl = deleteElement.attr('href');
+  $.ajax({
+    method: 'DELETE',
+    url: deleteUrl
+  }).done(function(data) {
+    deleteElement.remove();
+    window.location = '/profile';
+  });
+});
 
 
 </script>
