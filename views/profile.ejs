@@ -1,17 +1,16 @@
 <h2>Favorite Runs</h2>
 Welcome, <%- (currentUser.name) %>!
+
 <% favs.forEach(function(fav, idx) { %>
   <div>
     <h2><%= fav.name %></h2>
     <a href="/runMaps/showRuns/<%= fav.id %>">View Run</a>
-    <span id="delete">Delete</span>
-    <span id="update">Update</span>
+    <a href="/favs/deleteRun/<%= fav.id %>">Delete</a>
+    <a href="/favs/updateRun">Update</a>
   </div>
 <% }); %>
-
-<script>
-
-
-
-
-</script>
+        <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHKEYVYqaOgwp_M3GURu30QKreYxq61bQ&callback=initMap">
+    </script>
+    <script src="/js/map.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/onClickControls.js" type="text/javascript" charset="utf-8"></script>

@@ -1,5 +1,6 @@
 html {
     text-align: center;
+    margin: 4px;
 }
 
 img {
@@ -7,18 +8,8 @@ img {
     margin: 0 auto;
 }
 
-#pushFormToDB {
+#pushFormToDB, #pushRoutesToDB, #mapRoute {
     display: none;
-}
-
-#pushRoutesToDB {
-    display: none;
-    /*float: right;*/
-}
-
-#mapRoute {
-    display: none;
-    /*float: left;*/
 }
 
 #container {
