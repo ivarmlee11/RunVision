@@ -3,14 +3,19 @@
 <button id="favoriteId">Save To Favorites</button>
 <div id="showMeTheRun">
 </div>
+<div id="map">
+</div>
 
 <script>
+var map;
 
 var runs = <%- run.imageArray %>;
 
 console.log(runs);
 
 var runspoints = <%- run.latlngArray %>;
+
+console.log(JSON.stringify(runspoints));
 
 $("#favoriteId").on('click', function() {
     $.ajax({
@@ -30,6 +35,38 @@ $("#favoriteId").on('click', function() {
     });
 });
 
+function makeMap() {
+
+var map = new google.maps.Map(document.getElementById('map'), {
+    center: {
+        lat: 47.6397,
+        lng: -122.3644
+    },
+    zoom: 15
+});
+
+var runPath = new google.maps.Polyline({
+  path: runspoints,
+  geodesic: true,
+  strokeColor: '#FF0000',
+  strokeOpacity: 1.0,
+  strokeWeight: 2
+});
+
+
+runPath.setMap(map);
+var idx = 0;
+intervalID = window.setInterval(function() {
+    idx++;
+    if (idx >= runs.length) {
+        idx = 0;
+    }
+    $('#showMeTheRun').html('<img src="' + runs[idx] + '">');
+    map.setCenter(runspoints[idx]);
+}, 2000);
+
+};
+
 var index = 0;
 intervalID = window.setInterval(function() {
     index++;
@@ -37,7 +74,8 @@ intervalID = window.setInterval(function() {
         index = 0;
     }
     $('#showMeTheRun').html('<img src="' + runs[index] + '">');
-    // map.setCenter(runsPoints[index]);
 }, 2000);
 
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHKEYVYqaOgwp_M3GURu30QKreYxq61bQ&callback=makeMap">
 </script>

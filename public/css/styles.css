@@ -7,18 +7,8 @@ img {
     margin: 0 auto;
 }
 
-#pushFormToDB {
+#pushFormToDB, #pushRoutesToDB, #mapRoute {
     display: none;
-}
-
-#pushRoutesToDB {
-    display: none;
-    /*float: right;*/
-}
-
-#mapRoute {
-    display: none;
-    /*float: left;*/
 }
 
 #container {
@@ -26,13 +16,7 @@ img {
     height: 100%;
 }
 
-#results {
-    height: 450px;
-    width: 450px;
-    margin: 0 auto;
-}
-
-#map {
+#results, #map, #showMeTheRun {
     height: 450px;
     width: 450px;
     margin: 0 auto;

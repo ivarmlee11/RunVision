@@ -1,5 +1,11 @@
 <h2>Favorite Runs</h2>
 Welcome, <%- (currentUser.name) %>!
+
+<form action="/updateProfile/username" id="updateUsername">
+  <input type="text" name="name" value="" id="username">
+  <input type="submit" value="Update Username" id="submit">
+</form>
+
 <% favs.forEach(function(fav, idx) { %>
   <div>
     <h2><%= fav.name %></h2>
@@ -9,6 +15,21 @@ Welcome, <%- (currentUser.name) %>!
 <% }); %>
 
 <script>
+
+$('#updateUsername').on('submit', function(e) {
+  e.preventDefault();
+  var formElement = $(this);
+  var formPath = formElement.attr('action');
+  var formData = formElement.serialize();
+  $.ajax({
+    method: 'PUT',
+    url: formPath,
+    data: formData
+  }).done(function(data) {
+    console.log(data);
+    window.location = '/profile';
+  });
+});
 
 $('#delete').on('click', function(e) {
   e.preventDefault();
@@ -22,6 +43,5 @@ $('#delete').on('click', function(e) {
     window.location = '/profile';
   });
 });
-
 
 </script>
