@@ -1,0 +1,5 @@
+<% run.forEach(function(run, idx) { %>
+  <h2><%= run.name %></h2>
+  <h2><%= run.type %></h2>
+  <a href="/runMaps/showRuns/<%= run.id %>">View Run</a>
+<% }); %>

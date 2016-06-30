@@ -1,0 +1,43 @@
+<h2><%= run.name %></h2>
+
+<button id="favoriteId">Save To Favorites</button>
+<div id="showMeTheRun">
+</div>
+
+<script>
+
+var runs = <%- run.imageArray %>;
+
+console.log(runs);
+
+var runspoints = <%- run.latlngArray %>;
+
+$("#favoriteId").on('click', function() {
+    $.ajax({
+      type: "POST",
+      url: "/runMaps/favorite",
+      dataType: "json",
+      data: {
+          userId: <%- currentUser.id %>,
+          runId: <%- run.id %>
+      },
+      success: function (data) {
+          console.log('Success');
+      },
+      error: function (err) {
+          console.log(err);
+      }
+    });
+});
+
+var index = 0;
+intervalID = window.setInterval(function() {
+    index++;
+    if (index >= runs.length) {
+        index = 0;
+    }
+    $('#showMeTheRun').html('<img src="' + runs[index] + '">');
+    // map.setCenter(runsPoints[index]);
+}, 2000);
+
+</script>

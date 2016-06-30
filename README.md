@@ -1,10 +1,13 @@
-# Run Vision
+# Run App
 
-## Getting Started
-
-#### Scaffold w/tests (see `master` branch)
+## Notes
 
 * Run `npm install` to install dependencies
-  * Use `npm run lint:js` to lint your JS
-  * Use `npm run lint:css` to lint your CSS
-  * Use `npm test` to run tests
+* Open with Foreman and Nodemon 
+
+## API List
+
+* Google Maps JavaScript
+* Google Snap to Roads
+* Google Geometry
+* Google Static Street View Image

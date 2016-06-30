@@ -1,0 +1,26 @@
+<% if (currentUser) { %>
+Welcome, <%- (currentUser.name) %>!
+
+<h2>Home</h2>
+
+<div id='container'>
+  <div id="map">
+  </div>
+  <button class="btn-group btn-group-lg" role="group" aria-label="..." id="mapRoute">Play Show</button>
+
+  <form action="/runMaps/clientData" method="POST" accept-charset="utf-8" id="pushFormToDB">
+      <label>Name this Show</label>
+      <input type="text" name="name" required id="textInput">
+      <button type="submit" class="btn-group btn-group-sm" role="group" aria-label="..." id="pushRoutesToDB">Save Show</button>
+  </form>
+</div>
+  <div id="results"></div>
+</div>
+
+<script src="/js/app.js" type="text/javascript" charset="utf-8"></script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHKEYVYqaOgwp_M3GURu30QKreYxq61bQ&callback=initMap">
+</script>
+
+
+<% } %>

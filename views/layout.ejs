@@ -2,21 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <title>Authentication</title>
-
     <!-- Latest compiled and minified CSS & JS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <script src="//code.jquery.com/jquery.js"></script>
   </head>
   <body>
+    <a href="/">Home</a>
+    <a href="/auth/signup">Signup</a>
+    <a href="/auth/login">Login</a>
+    <a href="/auth/logout">Logout</a>
+    <a href="/profile">Profile</a>
+    <a href="/runMaps/showAllRuns">Show All Runs</a>
+
     <div class="container">
-      <%- JSON.stringify(currentUser) %>
       <% include partials/alerts %>
-      <h1>Authentication</h1>
+      <h1>Run App</h1>
       <%- body %>
     </div>
 
-    <script src="//code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<!--     <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHKEYVYqaOgwp_M3GURu30QKreYxq61bQ&callback=initMap">
+    </script> -->
+    <script src="/js/app.js" type="text/javascript" charset="utf-8"></script>
   </body>
 </html>

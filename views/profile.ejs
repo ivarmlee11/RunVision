@@ -1,3 +1,17 @@
-<h2>Profile Page</h2>
+<h2>Favorite Runs</h2>
+Welcome, <%- (currentUser.name) %>!
+<% favs.forEach(function(fav, idx) { %>
+  <div>
+    <h2><%= fav.name %></h2>
+    <a href="/runMaps/showRuns/<%= fav.id %>">View Run</a>
+    <span id="delete">Delete</span>
+    <span id="update">Update</span>
+  </div>
+<% }); %>
 
-<a href="/">Home</a>
+<script>
+
+
+
+
+</script>
