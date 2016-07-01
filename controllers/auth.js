@@ -23,8 +23,8 @@ router.post('/signup', function(req, res) {
         successFlash: 'User created. You are logged in.'
       })(req, res);
     } else {
-      console.log('User already exists with that email');
-      req.flash('error', 'User already exists with that email');
+      console.log('User already exists with that email.');
+      req.flash('error', 'User already exists with that email.');
       res.redirect('/auth/signup');
     }
   }).catch(function(error) {
@@ -39,7 +39,9 @@ router.get('/login', function(req, res) {
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/auth/login'
+  successFlash: 'Welcome!',
+  failureRedirect: '/auth/login',
+  failureFlash: 'You entered your username or password incorrectly.'
 }));
 
 router.get('/logout', function(req, res) {
