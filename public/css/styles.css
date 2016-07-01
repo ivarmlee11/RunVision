@@ -19,6 +19,10 @@ form {
     white-space: normal;
 }
 
+#symbol {
+    font-size: 1000%;
+}
+
 #logout {
     float: right;
 }
