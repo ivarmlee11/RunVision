@@ -1,4 +1,5 @@
-html {
+body, html {
+    background-color: #D9D3D3;
     text-align: center;
 }
 
@@ -7,11 +8,15 @@ img {
     margin: 0 auto;
 }
 
+.btn {
+    white-space: normal;
+}
+
 #pushFormToDB, #pushRoutesToDB, #mapRoute {
     display: none;
 }
 
-#container {
+#container, #mapRoute {
     width: 100%;
     height: 100%;
 }
@@ -22,11 +27,5 @@ img {
     margin: 0 auto;
 }
 
-#mapRoute {
-    width: 100px;
-    margin: 0 auto;
-}
 
-.btn {
-    white-space: normal;
-}
+

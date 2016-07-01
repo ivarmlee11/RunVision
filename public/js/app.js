@@ -5,24 +5,24 @@ var apiKey = 'AIzaSyCHKEYVYqaOgwp_M3GURu30QKreYxq61bQ';
 
 function initMap() {
 
-      var map = new google.maps.Map(document.getElementById('map'), {
-          center: {
-              lat: 47.6397,
-              lng: -122.3644
-          },
-          zoom: 14
+  var map = new google.maps.Map(document.getElementById('map'), {
+      center: {
+          lat: 47.6397,
+          lng: -122.3644
+      },
+      zoom: 14
 
+  });
+
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+      };
+      map.setCenter(pos);
       });
-
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-        };
-        map.setCenter(pos);
-        });
-    };
+  };
 
 
   google.maps.event.addListener(map, 'click', function(event) {
@@ -133,6 +133,7 @@ function initMap() {
                 console.log(err);
             }
           });
+          $(this).hide();
       });
   });
 };

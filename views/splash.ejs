@@ -1,24 +1,24 @@
 <% if (currentUser) { %>
 Welcome, <%- (currentUser.name) %>!
+<h2>Map An Activity</h2>
+<h4>Place markers on the map and hit the play button.</h4>
 
-<h2>Map A Run</h2>
-<h4>Place markers on the map.</h4>
-<h4>Hit play</h4>
 
   <div id='container'>
     <div id="map">
     </div>
-    <button class="btn-group btn-group-lg" role="group" aria-label="..." id="mapRoute">Play Show</button>
-
-    <form action="/runMaps/clientData" method="POST" accept-charset="utf-8" id="pushFormToDB">
-        <label>Name this Show</label>
-        <input type="text" name="name" required id="textInput">
-        <button type="submit" class="btn-group btn-group-sm" role="group" aria-label="..." id="pushRoutesToDB">Save Show</button>
-    </form>
+      <div id="onClickHide">
+        <button class="btn-group btn-group-sm" role="group" aria-label="..." id="mapRoute">Play Show</button>
+        <form action="/runMaps/clientData" method="POST" accept-charset="utf-8" id="pushFormToDB">
+            <label>Name this Show</label>
+            <input type="text" name="name" required id="textInput">
+            <button type="submit" class="btn-group btn-group-sm" role="group" aria-label="..." id="pushRoutesToDB">Save Show</button>
+        </form>
+      </div>
+    <div class="autoplay">
+    </div>
   </div>
 
-  <div class="autoplay">
-  </div>
 
 
 <script src="/js/app.js" type="text/javascript" charset="utf-8"></script>

@@ -29,11 +29,13 @@ router.post('/signup', function(req, res) {
     }
   }).catch(function(error) {
     console.log('error occurred', error.message);
+    req.flash('error', 'Fill all fields.');
     res.redirect('/auth/signup');
   });
 });
 
 router.get('/login', function(req, res) {
+  successFlash: 'Log in!',
   res.render('auth/login');
 });
 
@@ -45,6 +47,7 @@ router.post('/login', passport.authenticate('local', {
 }));
 
 router.get('/logout', function(req, res) {
+  successFlash: 'You logged out!',
   req.logout();
   res.redirect('/');
 });
