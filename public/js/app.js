@@ -97,6 +97,14 @@ function initMap() {
               map.setCenter(runPath[index]);
               $('#results').html('<img src="' + runPathUrl[index] + '">');
           }, 2000);
+
+
+        $('#sliderSlide').slick({
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 2000,
+        });
       });
 
       $("#pushFormToDB").on('submit', function(e) {
