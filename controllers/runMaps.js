@@ -2,6 +2,8 @@ var express = require('express');
 var db = require('../models');
 var passport = require('../config/ppConfig');
 var router = express.Router();
+var flash = require('connect-flash');
+var isLoggedIn = require('../middleware/isLoggedIn');
 
 router.post('/clientData', function(req, res) {
   db.run.create({
@@ -23,7 +25,7 @@ router.post('/favorite', function(req, res) {
   });
 });
 
-router.get("/showAllRuns", function(req, res) {
+router.get("/showAllRuns", isLoggedIn, function(req, res) {
   db.run.findAll({
   }).then(function(run) {
     res.render('showAllRuns', {run: run});
