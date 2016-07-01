@@ -1,7 +1,7 @@
 <h2><%= run.name %></h2>
 
 <button id="favoriteId">Save To Favorites</button>
-<div id="showMeTheRun">
+<div class="autoplay">
 </div>
 <div id="map">
 </div>
@@ -61,20 +61,24 @@ intervalID = window.setInterval(function() {
     if (idx >= runs.length) {
         idx = 0;
     }
-    $('#showMeTheRun').html('<img src="' + runs[idx] + '">');
+    // $('#showMeTheRun').html('<img src="' + runs[idx] + '">');
     map.setCenter(runspoints[idx]);
 }, 2000);
 
 };
 
-var index = 0;
-intervalID = window.setInterval(function() {
-    index++;
-    if (index >= runs.length) {
-        index = 0;
-    }
-    $('#showMeTheRun').html('<img src="' + runs[index] + '">');
-}, 2000);
+for (var i = 0; i < runs.length; i++) {
+  $('.autoplay').append('<div><img src="' + runs[i] + '"></div>');
+}''
+
+
+$('.autoplay').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1700,
+ });
+
 
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHKEYVYqaOgwp_M3GURu30QKreYxq61bQ&callback=makeMap">

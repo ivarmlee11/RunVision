@@ -5,14 +5,15 @@ var apiKey = 'AIzaSyCHKEYVYqaOgwp_M3GURu30QKreYxq61bQ';
 
 function initMap() {
 
-  var map = new google.maps.Map(document.getElementById('map'), {
-      center: {
-          lat: 47.6397,
-          lng: -122.3644
-      },
-      zoom: 17
+      var map = new google.maps.Map(document.getElementById('map'), {
+          center: {
+              lat: 47.6397,
+              lng: -122.3644
+          },
+          zoom: 14
 
-  });
+      });
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
         var pos = {
@@ -95,17 +96,20 @@ function initMap() {
                   index = 0;
               }
               map.setCenter(runPath[index]);
-              $('#results').html('<img src="' + runPathUrl[index] + '">');
           }, 2000);
 
+          for (var i = 0; i < runPathUrl.length; i++) {
+            $('.autoplay').append('<div><img src="' + runPathUrl[i] + '"></div>');
+          }''
 
-        $('#sliderSlide').slick({
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          autoplay: true,
-          autoplaySpeed: 2000,
+
+          $('.autoplay').slick({
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              autoplay: true,
+              autoplaySpeed: 2000,
+           });
         });
-      });
 
       $("#pushFormToDB").on('submit', function(e) {
           e.preventDefault();
