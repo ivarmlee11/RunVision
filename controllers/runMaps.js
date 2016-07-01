@@ -13,6 +13,7 @@ router.post('/clientData', function(req, res) {
     latlngArray: req.body.runPathString
   }).then(function(data) {
     res.send(data);
+    res.redirect('/showAllRuns');
   });
 });
 

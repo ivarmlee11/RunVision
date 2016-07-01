@@ -7,39 +7,63 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/css/styles.css">
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+<link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
 <script src="//code.jquery.com/jquery.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <% if (currentUser) { %>
-            <a href="/">Map A Run</a>
-            <% } %>
 
-            <% if (!currentUser) { %>
-            <div id="splashPop">
-                <a href="/auth/signup">Signup</a>
-                <a href="/auth/login">Login</a>
-            </div>
-            <% } %>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
+      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <% if (currentUser) { %>
+          <a href="/">Map A Run</a>
+          <% } %>
+        </li>
+        <li>
+          <% if (!currentUser) { %>
+          <a href="/auth/signup">Signup</a>
+        </li>
+        <li>
+            <a href="/auth/login">Login</a>
+          <% } %>
+        </li>
+        <% if (currentUser) { %>
+        <li>
+        <a href="/runMaps/showAllRuns">All Runs</a>
+        </li>
+        <li>
+        <a href="/profile">Favorite Runs</a>
+        </li>
+        <li>
+        <a href="/auth/logout">Logout</a>
+        </li>
+        <% } %>
+      </ul>
+      </ul>
+    <!-- </div> -->
+  </div>
+</nav>
 
-            <% if (currentUser) { %>
-            <a href="/auth/logout">Logout</a>
-            <a href="/profile">Favorite Runs</a>
-            <a href="/runMaps/showAllRuns">All Runs</a>
-            <% } %>
-        </div>
-    </nav>
-    <% if (!currentUser) { %>
-        <h1>Run Vision</h1>
-    <% } %>
-    <div class="container">
-      <% include partials/alerts %>
-      <%- body %>
-    </div>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script src="/js/app.js" type="text/javascript" charset="utf-8"></script>
-  </body>
+<% if (!currentUser) { %>
+  <div id='container'>
+      <h1>Run Vision</h1>
+  </div>
+
+  <div id='map-canvas'></div>
+
+<% } %>
+
+<div class="container">
+  <% include partials/alerts %>
+  <%- body %>
+</div>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="/js/app.js" type="text/javascript" charset="utf-8"></script>
+</body>
 </html>

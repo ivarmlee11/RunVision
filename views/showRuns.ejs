@@ -1,12 +1,14 @@
 <div class="container">
-  <h2><%= run.name %></h2>
-
-<button id="favoriteId">Save To Favorites</button>
+  <div class="well well-sm">
+    <h2><%= run.name %></h2>
+    <button class= "btn btn-primary" id="favoriteId">Save To Favorites</button>
+  </div>
 <div class="autoplay">
 </div>
 <div id="map">
 </div>
 </div>
+
 <script>
 var map;
 
@@ -54,7 +56,6 @@ var runPath = new google.maps.Polyline({
   strokeWeight: 2
 });
 
-
 runPath.setMap(map);
 var idx = 0;
 intervalID = window.setInterval(function() {
@@ -72,14 +73,14 @@ for (var i = 0; i < runs.length; i++) {
   $('.autoplay').append('<div><img src="' + runs[i] + '"></div>');
 }''
 
-
 $('.autoplay').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 1800,
+    prevArrow: false,
+    nextArrow: false
  });
-
 
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHKEYVYqaOgwp_M3GURu30QKreYxq61bQ&callback=makeMap">

@@ -2,12 +2,13 @@
 Welcome, <%- (currentUser.name) %>!
 
 <form action="/updateProfile/username" id="updateUsername">
+  <span class="label label-default">Change Username</span>
   <input type="text" name="name" value="" id="username">
-  <input type="submit" value="Update Username" id="submit">
+  <input type="submit" class="btn btn-primary sm" value="&#8592;" id="submit">
 </form>
 
 <% favs.forEach(function(fav, idx) { %>
-  <div>
+  <div class="well well-sm">
     <h2><%= fav.name %></h2>
     <a href="/runMaps/showRuns/<%= fav.id %>">View Run</a>
     <a href="/favs/deleteFavorites/<%= fav.id %>" id="delete">Delete Run</a>

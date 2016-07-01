@@ -1,6 +1,8 @@
 body, html {
     background-color: #D9D3D3;
     text-align: center;
+    font-family: 'Arvo', serif;
+    margin: 10px;
 }
 
 img {
@@ -8,15 +10,24 @@ img {
     margin: 0 auto;
 }
 
+form {
+    width: 50%;
+    margin: 0 auto;
+}
+
 .btn {
     white-space: normal;
+}
+
+#logout {
+    float: right;
 }
 
 #pushFormToDB, #pushRoutesToDB, #mapRoute {
     display: none;
 }
 
-#container, #mapRoute {
+#container {
     width: 100%;
     height: 100%;
 }
