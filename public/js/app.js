@@ -5,14 +5,17 @@ var apiKey = 'AIzaSyCHKEYVYqaOgwp_M3GURu30QKreYxq61bQ';
 
 function initMap() {
 
+    // google maps object created
+
     var map = new google.maps.Map(document.getElementById('map'), {
         center: {
             lat: 47.6397,
             lng: -122.3644
         },
         zoom: 14
-
     });
+
+    // checks if geolocation is available
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -24,6 +27,10 @@ function initMap() {
         });
     };
 
+    // allows markers to be placed on the map
+    // once the map is clicked a button appears below the map
+    // which allows the user to play a slide show
+
     google.maps.event.addListener(map, 'click', function(event) {
         $("#mapRoute").show();
         var marker = new google.maps.Marker({
@@ -33,13 +40,20 @@ function initMap() {
             },
             map: map
         });
+
+        // on click lat lngs from google map pushed to an array
+
         runPath.push({
             lat: event.latLng.lat(),
             lng: event.latLng.lng()
         });
     });
 
+    // still inside the intitiate map function
+
     $(document).ready(function() {
+
+        // on click forms and buttons are shown to allow user to save runs
 
         $("#mapRoute").on('click', function() {
 
@@ -47,10 +61,17 @@ function initMap() {
 
             $("#pushRoutesToDB").show();
 
+            // fixing the runpath data so I can use the path array
+            // as a key in my ajax call to snaptoroads api
+            // I am taking the clicked points on a map trying to convert them
+            // to snap to roads points
+
             path = [];
             for (var i = 0; i < runPath.length; i++) {
                 path.push(runPath[i].lat + ',' + runPath[i].lng);
             };
+
+            // ajax call to convert points
 
             $.get('https://roads.googleapis.com/v1/snapToRoads', {
                 interpolate: true,
@@ -63,7 +84,8 @@ function initMap() {
                 };
             });
 
-            // Store snapped polyline returned by the snap-to-road service.
+            // store snapped polyline
+
             function processSnapToRoadResponse(data) {
                 snappedCoordinates = [];
                 for (var i = 0; i < data.snappedPoints.length; i++) {
@@ -73,7 +95,9 @@ function initMap() {
                     snappedCoordinates.push(latlng);
                 }
             };
-            // Draws the snapped polyline (after processing snap-to-road response).
+
+            // draws a polyline
+
             function drawSnappedPolyline() {
                 var snappedPolyline = new google.maps.Polyline({
                     path: snappedCoordinates,
@@ -83,10 +107,14 @@ function initMap() {
                 snappedPolyline.setMap(map);
             };
 
+            // image links created from the clicked points on the map
+
             for (var i = 0; i < runPath.length; i++) {
                 runPathUrl.push('https://maps.googleapis.com/maps/api/streetview?size=400x400&location=' +
                     runPath[i].lat + ',' + runPath[i].lng + '&fov=90&pitch=0&key=' + apiKey + '');
             };
+
+            // interval set to recenter map on points from an array
 
             var index = 0;
             intervalID = window.setInterval(function() {
@@ -99,8 +127,9 @@ function initMap() {
 
             for (var i = 0; i < runPathUrl.length; i++) {
                 $('.autoplay').append('<div><img src="' + runPathUrl[i] + '"></div>');
-            }
-            ''
+            };
+
+            // slick slider starts
 
             $('.autoplay').slick({
                 slidesToShow: 1,
@@ -111,6 +140,8 @@ function initMap() {
                 nextArrow: false
             });
         });
+
+        // on click event wraps an ajax call to push run data to an array
 
         $("#pushFormToDB").on('submit', function(e) {
             e.preventDefault();

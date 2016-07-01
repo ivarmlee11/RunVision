@@ -17,6 +17,8 @@ Welcome, <%- (currentUser.name) %>!
 
 <script>
 
+// ajax call to change username
+
 $('#updateUsername').on('submit', function(e) {
   e.preventDefault();
   var formElement = $(this);
@@ -31,6 +33,8 @@ $('#updateUsername').on('submit', function(e) {
     window.location = '/profile';
   });
 });
+
+// ajax call to remove from favorites
 
 $('#delete').on('click', function(e) {
   e.preventDefault();
