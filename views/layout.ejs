@@ -11,6 +11,7 @@
 <script src="//code.jquery.com/jquery.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 </head>
 <body>
 
@@ -18,32 +19,35 @@
   <div class="container-fluid">
     <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
       <ul class="nav navbar-nav">
-      <ul class="nav navbar-nav navbar-right">
-        <li>
+        <ul class="nav navbar-nav navbar-right">
           <% if (currentUser) { %>
-          <a href="/">Map A Run</a>
+            <li>
+              <a href="/">Map A Run</a>
+            </li>
           <% } %>
-        </li>
-        <li>
           <% if (!currentUser) { %>
-          <a href="/auth/signup">Signup</a>
-        </li>
-        <li>
-            <a href="/auth/login">Login</a>
+            <li>
+              <a href="/auth/signup">Signup</a>
+            </li>
+            <li>
+              <a href="/auth/login">Login</a>
+            </li>
+            <li>
+              <a class="help-bs-box" href="#">How to use this app</a>
+            </li>
           <% } %>
-        </li>
-        <% if (currentUser) { %>
-        <li>
-        <a href="/runMaps/showAllRuns">All Runs</a>
-        </li>
-        <li>
-        <a href="/profile">Favorite Runs</a>
-        </li>
-        <li>
-        <a href="/auth/logout">Logout</a>
-        </li>
-        <% } %>
-      </ul>
+          <% if (currentUser) { %>
+            <li>
+              <a href="/runMaps/showAllRuns">All Runs</a>
+            </li>
+            <li>
+              <a href="/profile">Favorite Runs</a>
+            </li>
+            <li>
+              <a href="/auth/logout">Logout</a>
+            </li>
+          <% } %>
+        </ul>
       </ul>
     <!-- </div> -->
   </div>
@@ -62,6 +66,21 @@
   <% include partials/alerts %>
   <%- body %>
 </div>
+
+<script>
+var help = $('.help-bs-box')
+
+help.on('click', function(e) {
+  e.preventDefault()
+  bootbox.alert({ 
+    size: "small",
+    title: "Your Title",
+    message: "Your message here…", 
+    callback: function(){ /* your callback code */ }
+  })
+})
+
+</script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script src="/js/app.js" type="text/javascript" charset="utf-8"></script>
